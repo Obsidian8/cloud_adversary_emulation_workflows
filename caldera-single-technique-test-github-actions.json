@@ -1,0 +1,128 @@
+{
+  "schema_version": 30,
+  "standard_lib_version": 95,
+  "action_runtime_version": 88,
+  "name": "Caldera Single Technique Test (GitHub Actions)",
+  "description": "Minimal test story: a webhook (called from a GitHub Actions workflow_dispatch) launches the 'Azure Test - Single Technique' Caldera adversary (retrieves Azure App Service publishing credentials, ~2min, self-cleaning) against the azure-redteam agent group.",
+  "guid": "e1f2453e04042b977beb8c46e5eec3b8",
+  "slug": "caldera_single_technique_test_github_actions",
+  "agents": [
+    {
+      "type": "Agents::WebhookAgent",
+      "name": "Webhook Action",
+      "disabled": false,
+      "description": "Called by the GitHub Actions workflow_dispatch step. Expects JSON body: {\"run_name\": \"...\"}",
+      "guid": "b9535552d6c474a2c9632ff5aca8eac0",
+      "origin_story_identifier": "cloud:23d1e69be67e533b976f41a10a0d6a2a:e1f2453e04042b977beb8c46e5eec3b8",
+      "options": {
+        "path": "d60e32ece6383519d458901f6911083d",
+        "secret": "93b2b3f449b32daacb35418c5fa02cf2",
+        "verbs": "post"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Start Caldera Operation",
+      "disabled": false,
+      "description": "Launches a single-technique test adversary (id 9bef6cd9-80d4-4ea7-a4fc-3208cf0901e9) against group azure-redteam using the atomic planner.",
+      "guid": "fe419cb1f0cb446dc3a529df6d04dae2",
+      "origin_story_identifier": "cloud:23d1e69be67e533b976f41a10a0d6a2a:e1f2453e04042b977beb8c46e5eec3b8",
+      "options": {
+        "url": "<<RESOURCE.caldera_domain>>/api/v2/operations",
+        "method": "post",
+        "content_type": "application_json",
+        "payload": {
+          "name": "<<webhook_action.body.run_name>>",
+          "adversary": {
+            "adversary_id": "9bef6cd9-80d4-4ea7-a4fc-3208cf0901e9"
+          },
+          "planner": {
+            "id": "aaa7c857-37a0-4c4a-85f7-4e9f7f30e31a"
+          },
+          "group": "azure-redteam",
+          "state": "running",
+          "autonomous": 1,
+          "auto_close": true,
+          "obfuscator": "plain-text",
+          "use_learning_parsers": false
+        },
+        "headers": {
+          "accept": "application/json",
+          "KEY": "<<CREDENTIAL.caldera_api_key>>"
+        },
+        "disable_ssl_verification": false
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    }
+  ],
+  "diagram_notes": [],
+  "links": [
+    {
+      "source": 0,
+      "receiver": 1
+    }
+  ],
+  "diagram_layout": "{\"b9535552d6c474a2c9632ff5aca8eac0\":[375,120],\"fe419cb1f0cb446dc3a529df6d04dae2\":[375,270]}",
+  "story_library_metadata": {},
+  "monitor_failures": false,
+  "synchronous_webhooks_enabled": false,
+  "integrations": [],
+  "sections": [],
+  "parent_only_send_to_story": false,
+  "send_to_story_timeout_enabled": false,
+  "send_to_story_timeout_duration_seconds": null,
+  "keep_events_for": 86400,
+  "reporting_status": true,
+  "send_to_story_enabled": false,
+  "entry_agent_guid": null,
+  "exit_agent_guids": [],
+  "api_entry_action_guids": [],
+  "api_exit_action_guids": [],
+  "send_to_story_access": null,
+  "send_to_story_access_source": 0,
+  "send_to_story_skill_use_requires_confirmation": true,
+  "pages": [],
+  "tags": [],
+  "time_saved_unit": "minutes",
+  "time_saved_value": 0,
+  "origin_story_identifier": "cloud:23d1e69be67e533b976f41a10a0d6a2a:e1f2453e04042b977beb8c46e5eec3b8",
+  "recipients": [],
+  "integration_product": null,
+  "integration_vendor": null,
+  "llm_product_instructions": "",
+  "start_reference": null,
+  "app_endpoints": [],
+  "send_to_stories": [],
+  "exported_at": "2026-09-19T04:10:52Z",
+  "icon": ":rocket:"
+}
