@@ -54,7 +54,7 @@
           "planner": {
             "id": "aaa7c857-37a0-4c4a-85f7-4e9f7f30e31a"
           },
-          "group": "azure-redteam",
+          "group": "cloud soc",
           "state": "running",
           "autonomous": 1,
           "auto_close": true,
