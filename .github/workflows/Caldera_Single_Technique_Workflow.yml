@@ -1,0 +1,19 @@
+name: Trigger Caldera Single-Technique Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_name:
+        description: "Name for the Caldera operation"
+        required: false
+        default: "GH Actions Test"
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST to Tines webhook
+        run: |
+          curl -sf -X POST "${{ secrets.TINES_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"run_name\": \"${{ github.event.inputs.run_name }} #${{ github.run_number }}\"}"
