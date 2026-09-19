@@ -3,7 +3,7 @@
   "standard_lib_version": 95,
   "action_runtime_version": 88,
   "name": "Caldera Single Technique Test (GitHub Actions)",
-  "description": "Minimal test story: a webhook (called from a GitHub Actions workflow_dispatch) launches the 'Azure Test - Single Technique' Caldera adversary (retrieves Azure App Service publishing credentials, ~2min, self-cleaning) against the azure-redteam agent group.",
+  "description": "Minimal test story: a webhook (called from a GitHub Actions workflow_dispatch) launches the 'Azure Test - Single Technique' Caldera adversary (retrieves Azure App Service publishing credentials, ~2min, self-cleaning) against the cloud soc team.",
   "guid": "e1f2453e04042b977beb8c46e5eec3b8",
   "slug": "caldera_single_technique_test_github_actions",
   "agents": [
